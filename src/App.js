@@ -4,32 +4,43 @@ import  Vendors from './containers/Vendors';
 import Events from './containers/Events';
 import Childern from './components/Children';
 import Parent from './components/Parent';
+import Keys from './components/Keys';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentTitle : 'Learning how React Components Communicate'
+      employees: [
+        {
+          name: 'Rishabh',
+          occupation: 'Full Stack Dev'
+        },
+        {
+          name: 'Rahul',
+          occupation: 'Content Writer'
+        },
+        {
+          name: 'Raj',
+          occupation: 'UX'
+        }
+      ]
     }
-
   }
-  changeTitle = () => {
-    this.setState({
-      currentTitle: 'Learned React Components Communication'
-    })
+  deleteEmployee = (index, e) => {
+    const employees = JSON.parse(JSON.stringify(this.state.employees));
+    employees.splice(index, 1);
+    this.setState({ employees: employees})
   }
   render() {
     return (
       <div >
-        {/* React Testing App
-        <ProductsCatalog product = {
-      {
-        id: 1,
-        desc: 'Guide to Js'
-      } }/> */}
-      {/* <Vendors /> */}
-      {/* <Events /> */}
-      <Parent currentTitle = {this.state.currentTitle} changeTitle = {this.changeTitle} />
+        <ul>
+          {
+            this.state.employees.map((user, i) => {
+              return (<Keys key = {i} name = {user.name} occupation = {user.occupation} delete = {this.deleteEmployee}/>)
+            })
+          }
+        </ul>
       </div>
     ) 
   }
