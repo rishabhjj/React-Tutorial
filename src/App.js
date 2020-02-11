@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProductsCatalog from './containers/ProductsCatalog';
 import  Vendors from './containers/Vendors';
-
+import Events from './containers/Events';
 class App extends Component {
   render() {
     return (
@@ -12,7 +12,8 @@ class App extends Component {
         id: 1,
         desc: 'Guide to Js'
       } }/> */}
-      <Vendors />
+      {/* <Vendors /> */}
+      <Events />
       </div>
     ) 
   }
